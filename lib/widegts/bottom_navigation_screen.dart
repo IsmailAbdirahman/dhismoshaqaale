@@ -18,7 +18,6 @@ class homeState extends State<DisplayData> {
   List<Widget> _widgetOptions = <Widget>[
     ProductsScreen(),
     HistoryScreen(),
-    JumloHistory(),
   ];
 
   void _onItemTapped(int index) {
@@ -44,7 +43,6 @@ class homeState extends State<DisplayData> {
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
         BottomNavigationBarItem(icon: Icon(Icons.indeterminate_check_box_sharp), label: "Tafaariiq"),
-        BottomNavigationBarItem(icon: Icon(Icons.widgets), label: "Jumlo"),
       ],
       currentIndex: _selectedIndex,
       selectedItemColor: Colors.white,

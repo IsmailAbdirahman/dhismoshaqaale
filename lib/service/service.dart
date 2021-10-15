@@ -41,11 +41,9 @@ class Service {
   List<ProductModel> getProductSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return ProductModel(
-          groupPriceToSell: doc['groupPrice'],
           productID: doc['productID'],
           productName: doc['productName'],
           pricePerItemPurchased: doc['pricePerItemPurchased'],
-          pricePerItemToSell: doc['pricePerItemToSell'],
           quantity: doc['quantity']);
     }).toList();
   }

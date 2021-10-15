@@ -106,14 +106,7 @@ class ProductTile extends StatelessWidget {
               ),
               CardInfo(
                 desc: "Halki Xabo Qiimahiisa: ",
-                text: "\$${productModel!.pricePerItemToSell}",
-              ),
-              Divider(
-                color: Colors.white,
-              ),
-              CardInfo(
-                desc: "Jumalada: ",
-                text: "\$${productModel!.groupPriceToSell}",
+                text: "\$${productModel!.pricePerItemPurchased}",
               ),
               Divider(
                 color: Colors.white,
