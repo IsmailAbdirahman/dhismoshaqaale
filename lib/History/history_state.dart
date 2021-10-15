@@ -11,9 +11,9 @@ class HistoryState extends ChangeNotifier {
   Service _service = Service();
 
   Stream<List<HistoryModel>> get getHistoryStream {
-    return _service.users
-        .doc(userID)
-        .collection("History")
+    return _service.projects
+        .doc(projectID)
+        .collection("users").doc(userID).collection('History')
         .snapshots()
         .map(_service.getHistorySnapshot);
   }

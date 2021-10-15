@@ -7,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shaqalahadhismoapp/model/history_model.dart';
 import 'package:shaqalahadhismoapp/model/loan_history_model.dart';
 import 'package:shaqalahadhismoapp/model/product_model.dart';
+import 'package:shaqalahadhismoapp/model/project_names_model.dart';
 import 'package:shaqalahadhismoapp/service/shared_pref.dart';
 import 'package:shaqalahadhismoapp/signIn/sign_in.dart';
 import 'package:shaqalahadhismoapp/signIn/sign_in_state.dart';
@@ -19,17 +20,23 @@ const String PROJECTS = "projects";
 const String PRODUCTS = "products";
 const String USERS = "users";
 const String LOAN = "jumlo";
-const String projectID = "madiino";
 
 class Service {
   SharedPref _sharedPref = SharedPref();
   CollectionReference projects =
-  FirebaseFirestore.instance.collection(PROJECTS);
+      FirebaseFirestore.instance.collection(PROJECTS);
   CollectionReference products =
       FirebaseFirestore.instance.collection(PRODUCTS);
   CollectionReference users = FirebaseFirestore.instance.collection(USERS);
 
   CollectionReference loan = FirebaseFirestore.instance.collection(LOAN);
+
+  //get list of project names
+  List<ProjectsNames> getProjectNamesList(QuerySnapshot snapshot) {
+    return snapshot.docs.map((doc) {
+      return ProjectsNames(projectName: doc['projectNameOrID']);
+    }).toList();
+  }
 
   List<ProductModel> getProductSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
@@ -44,7 +51,7 @@ class Service {
   }
 
   updateQuantity(String productID, int quantity) {
-    products
+   projects.doc(projectID).collection('products')
         .doc(productID)
         .update({'productID': productID, 'quantity': quantity})
         .then((value) => print("Updated"))
@@ -53,8 +60,7 @@ class Service {
 
   //update the totalSold
   updateTotalSold(double totalSold) {
-    products
-        .doc('totalData')
+    projects.doc(projectID)
         .collection("totalOfProducts")
         .doc('totalData')
         .update({"totalPriceToSell": totalSold}).then((value) {
@@ -64,9 +70,8 @@ class Service {
 
   getTotal(double pricePerItemSold) {
     double totalPriceOfSell = 0;
-    products
-        .doc('totalData')
-        .collection('totalOfProducts')
+    projects.doc(projectID)
+        .collection("totalOfProducts")
         .doc('totalData')
         .get()
         .then((DocumentSnapshot snapshot) {
@@ -86,7 +91,8 @@ class Service {
         "${now.hour}:${now.minute} | ${now.day}:${now.month}:${now.year}";
     print("CURRENT DATE IS T:T:T:T:T:T:T: $currentDate");
 
-    users.doc(userID).collection('History').doc(historyID).set({
+    projects.doc(projectID).collection('users')
+        .doc(userID).collection('History').doc(historyID).set({
       "historyID": historyID,
       "productName": prdName,
       "pricePerItemToSell": pricePerItem,
@@ -162,8 +168,8 @@ class Service {
 
   //parent Login
   getUsersInfo(String registeredPhoneNumber, BuildContext context) {
-    final DocumentReference documentReference =
-        FirebaseFirestore.instance.doc("projects/$projectID/users/$registeredPhoneNumber");
+    final DocumentReference documentReference = FirebaseFirestore.instance
+        .doc("projects/$projectID/users/$registeredPhoneNumber");
     StreamSubscription<DocumentSnapshot> subscription;
     subscription = documentReference.snapshots().listen((dataSnapshot) {
       if (dataSnapshot.exists) {

@@ -10,8 +10,11 @@ final productListProvider = ChangeNotifierProvider((ref) => ProductListState());
 class ProductListState extends ChangeNotifier {
   Service _service = Service();
 
-  Stream<List<ProductModel>> get getProductStream {
-    return _service.products.snapshots().map(_service.getProductSnapshot);
+  Stream<List<ProductModel>>  getProductStream(String projectID) {
+    return Service()
+        .projects.doc(projectID).collection("products")
+        .snapshots()
+        .map(_service.getProductSnapshot);
   }
 
   saveTafaariiqProductInfo(String prdID, String prdName, int quantity,

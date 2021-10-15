@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shaqalahadhismoapp/project_names/project_names_state.dart';
 import 'package:shaqalahadhismoapp/signIn/sign_in_state.dart';
 import 'package:shaqalahadhismoapp/signIn/userId.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({Key? key}) : super(key: key);
-
-  @override
-  _SignInScreenState createState() => _SignInScreenState();
-}
-
-class _SignInScreenState extends State<SignInScreen> {
+class SignInScreen extends ConsumerWidget {
   TextEditingController _registeredPhoneNumbercontroller =
       TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ScopedReader watch) {
+    final selectedProjectName = watch(projectNamesProvider);
+    String projectIDProvider = selectedProjectName.currentProjectName!;
     return Scaffold(
       body: Column(
         children: [
@@ -37,9 +33,11 @@ class _SignInScreenState extends State<SignInScreen> {
                   ? CircularProgressIndicator()
                   : ElevatedButton(
                       onPressed: () {
+                        projectID = projectIDProvider;
                         signInProviderWatch.showLoadingBarWhileSinging();
                         context.read(signInProvider).getUsersInfo(
-                            _registeredPhoneNumbercontroller.text, context);
+                            _registeredPhoneNumbercontroller.text,
+                            context);
                       },
                       child: Text("Enter"));
             },

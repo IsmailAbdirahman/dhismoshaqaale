@@ -21,7 +21,7 @@ class SignInState extends ChangeNotifier {
   bool get isLoading => _isLoading;
 
   getUsersInfo(String registeredPhoneNumber, BuildContext context) {
-    return _service.getUsersInfo(registeredPhoneNumber, context);
+    return _service.getUsersInfo(registeredPhoneNumber,context);
   }
 
   saveUserUID(String userUID) async {

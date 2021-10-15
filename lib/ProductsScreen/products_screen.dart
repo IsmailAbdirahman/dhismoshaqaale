@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shaqalahadhismoapp/History/search_history.dart';
 import 'package:shaqalahadhismoapp/ProductsScreen/product_search.dart';
 import 'package:shaqalahadhismoapp/model/product_model.dart';
+import 'package:shaqalahadhismoapp/project_names/project_names_state.dart';
 
 import 'product_details.dart';
 import 'product_screen_state.dart';
@@ -20,7 +21,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
   @override
   void initState() {
     super.initState();
-    productStreamData = context.read(productListProvider).getProductStream;
+    String projectID = context.read(projectNamesProvider).currentProjectName!;
+    productStreamData =
+        context.read(productListProvider).getProductStream(projectID);
   }
 
   @override
