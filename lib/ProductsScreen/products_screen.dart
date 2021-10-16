@@ -91,7 +91,7 @@ class ProductTile extends StatelessWidget {
       padding: EdgeInsets.all(10),
       child: Card(
         elevation: 10,
-        color: Colors.deepPurple[700],
+        color: Colors.deepOrangeAccent[700],
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Padding(
           padding: const EdgeInsets.all(18.0),
@@ -104,17 +104,11 @@ class ProductTile extends StatelessWidget {
               Divider(
                 color: Colors.white,
               ),
-              CardInfo(
-                desc: "Halki Xabo Qiimahiisa: ",
-                text: "\$${productModel!.pricePerItemPurchased}",
-              ),
-              Divider(
-                color: Colors.white,
-              ),
+
               CardInfo(
                 desc: "Inta Xabo ka taalo: ",
                 text: productModel!.quantity.toString(),
-                color: productModel!.quantity! > 16 ? Colors.white : Colors.red,
+                color: productModel!.quantity! > 16 ? Colors.white : Colors.grey,
               ),
             ],
           ),

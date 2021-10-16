@@ -37,12 +37,12 @@ class homeState extends State<DisplayData> {
 
   Widget getBottomNavigationBar() {
     return BottomNavigationBar(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.deepOrange,
       elevation: 0,
       unselectedItemColor: Colors.grey,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.indeterminate_check_box_sharp), label: "Tafaariiq"),
+        BottomNavigationBarItem(icon: Icon(Icons.indeterminate_check_box_sharp), label: "History"),
       ],
       currentIndex: _selectedIndex,
       selectedItemColor: Colors.white,

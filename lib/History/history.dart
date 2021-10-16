@@ -34,7 +34,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
             return Scaffold(
               appBar: AppBar(
                 automaticallyImplyLeading: false,
-                title: Text("Tafaariiq"),
+                title: Text("History"),
                 centerTitle: true,
                 actions: [
                   SearchBarHistoryWidget(
@@ -72,13 +72,13 @@ class HistoryTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      color: Colors.deepPurple[700],
+      color: Colors.deepOrange[700],
       child: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Column(
           children: [
             CardInfo(
-              desc: "Taarikhda la iibiyay: ",
+              desc: "Taarikhda la isticmalay: ",
               text: historyModel!.dateTold,
             ),
             Divider(
@@ -99,24 +99,24 @@ class HistoryTile extends StatelessWidget {
               color: Colors.white70,
             ),
             CardInfo(
-              desc: "Inta Xabo la iibiyay: ",
+              desc: "Inta Xabo la isticmalay: ",
               text: historyModel!.quantity.toString(),
             ),
             Divider(
               color: Colors.white70,
             ),
-            CardInfo(
-              desc: "Halki xabo Qiimaha Lagu iibiyay: ",
-              text: "\$${historyModel!.pricePerItemToSell}",
-            ),
-            Divider(
-              thickness: 2.5,
-              color: Colors.white70,
-            ),
-            CardInfo(
-              desc: "Total: ",
-              text: "\$${historyModel!.totalPrice}",
-            ),
+            // CardInfo(
+            //   desc: "Halki xabo Qiimaha Lagu so iibiyay: ",
+            //   text: "\$${historyModel!.pricePerItemToSell}",
+            // ),
+            // Divider(
+            //   thickness: 2.5,
+            //   color: Colors.white70,
+            // ),
+            // CardInfo(
+            //   desc: "Total: ",
+            //   text: "\$${historyModel!.totalPrice}",
+            // ),
           ],
         ),
       ),

@@ -151,7 +151,7 @@ class _ProductDetailsState extends State<ProductDetails> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Ma Hubtaa in aad ii bisay?'),
+          title: const Text('Ma Hubtaa in tiradaas lo bahan yahay ?'),
           content: SingleChildScrollView(
             child: ListBody(
               children: const <Widget>[],
@@ -224,10 +224,10 @@ class _ProductDetailsState extends State<ProductDetails> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.9,
+              height: MediaQuery.of(context).size.height * 0.6,
               padding: EdgeInsets.all(12),
               child: Card(
-                color: Colors.deepPurple,
+                color: Colors.deepOrange[900],
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16)),
                 child: Padding(
@@ -242,25 +242,25 @@ class _ProductDetailsState extends State<ProductDetails> {
                         color: Colors.white,
                       ),
                       ProductNameDisplay(
-                          title: "Inta xabo suuqa taalo: ",
+                          title: "Inta xabo taalo: ",
                           data: widget.productModel!.quantity.toString()),
                       Divider(
                         color: Colors.white,
                       ),
-                      ProductNameDisplay(
-                          title: "Qimaha halki xabo: ",
-                          data:
-                              "\$${widget.productModel!.pricePerItemPurchased}"),
-                      Divider(
-                        color: Colors.white,
-                        thickness: 2,
-                      ),
+                      // ProductNameDisplay(
+                      //     title: "Qimaha halki xabo: ",
+                      //     data:
+                      //         "\$${widget.productModel!.pricePerItemPurchased}"),
+                      // Divider(
+                      //   color: Colors.white,
+                      //   thickness: 2,
+                      // ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
                             child: Text(
-                              "Inta Xabo la isticmalay manta: ",
+                              "Inta Xabo lo bahanyahy hada: ",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white70,
@@ -290,9 +290,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                       Divider(
                         color: Colors.white,
                       ),
-                      ProductNameDisplay(
-                          title: "Total: ",
-                          data: "\$$totalPriceToDisplayOnScreenBeforePaying"),
+                      // ProductNameDisplay(
+                      //     title: "Total: ",
+                      //     data: "\$$totalPriceToDisplayOnScreenBeforePaying"),
                     ],
                   ),
                 ),
@@ -310,7 +310,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     showToastMessage("Fadlan geli tirada loo bahan yahay");
                   }
                 },
-                child: Text("iibi"))
+                child: Text("Isticmaal"))
           ],
         ),
       )),
